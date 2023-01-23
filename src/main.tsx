@@ -18,7 +18,16 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 
       globalStyles: (theme) => ({
         body: {
-          backgroundColor: theme.colors.customPurple[0],
+          width: '100%',
+          height: '100vh',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: theme.colors.customGrey[1],
+
+          '#root': {
+            overflow: 'auto',
+          },
         },
       }),
 

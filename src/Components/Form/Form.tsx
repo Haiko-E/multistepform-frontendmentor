@@ -47,7 +47,14 @@ const Form = () => {
   });
 
   return (
-    <Flex align='center' justify='space-between' w='750px' bg='customGrey.0' p='md'>
+    <Flex
+      align='center'
+      justify='space-between'
+      w='800px'
+      bg='customGrey.0'
+      p='md'
+      style={{ overflow: 'auto', borderRadius: '10px' }}
+    >
       <FormSteps step={step} />
       <form>
         {step === 1 && <PersonInfo form={form} step={step} setStep={setStep} />}
