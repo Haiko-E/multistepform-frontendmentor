@@ -15,7 +15,10 @@ const FormSteps = ({ step }: Props) => {
     <AspectRatio
       w={matches ? '100%' : '100%'}
       ratio={matches ? 274 / 568 : 375 / 172}
-      sx={matches ? { maxWidth: 274 } : { maxWidth: 400 }}
+      sx={matches ? { maxWidth: 274 } : { maxWidth: '100%' }}
+      style={
+        matches ? {} : { position: 'absolute', top: '0', left: '0', right: '0' }
+      }
     >
       <Image
         src={
@@ -23,6 +26,7 @@ const FormSteps = ({ step }: Props) => {
             ? '/public/assets/images/bg-sidebar-desktop.svg'
             : '/public/assets/images/bg-sidebar-mobile.svg'
         }
+        styles={{ figure: { width: '100%' } }}
         alt='Background form steps'
       />
 

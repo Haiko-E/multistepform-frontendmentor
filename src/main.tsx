@@ -1,4 +1,3 @@
-import React from 'react';
 import { MantineProvider } from '@mantine/core';
 import ReactDOM from 'react-dom/client';
 import App from './App';
@@ -19,15 +18,18 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       globalStyles: (theme) => ({
         body: {
           width: '100%',
-          height: '100vh',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
           backgroundColor: theme.colors.customGrey[1],
 
           '#root': {
+            // width: '100%',
             overflow: 'auto',
           },
+        },
+        '.blank': {
+          display: 'none',
         },
       }),
 

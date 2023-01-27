@@ -1,7 +1,8 @@
 import { Flex, Text, TextInput, Title, Button } from '@mantine/core';
 import { UseFormReturnType } from '@mantine/form/lib/types';
 import { Dispatch, SetStateAction } from 'react';
-import Form from '../Form/Form';
+import { Form } from '../Form/Form';
+import { useMediaQuery } from '@mantine/hooks';
 
 type Props = {
   step: number;
@@ -10,6 +11,8 @@ type Props = {
 };
 
 const PersonInfo = ({ step, setStep, form }: Props) => {
+  const matches = useMediaQuery('(min-width: 500px)');
+
   const handleNext = () => {
     if (form.validate().hasErrors) {
       return;
@@ -18,7 +21,26 @@ const PersonInfo = ({ step, setStep, form }: Props) => {
   };
 
   return (
-    <Flex py='md' w='430px' h='500px' justify='space-around' direction='column'>
+    <Flex
+      style={
+        matches
+          ? {}
+          : {
+              position: 'absolute',
+              top: '100px',
+              left: '30px',
+              right: '30px',
+              borderRadius: '10px',
+            }
+      }
+      bg={'customGrey.0'}
+      py='md'
+      px={matches ? '0px' : 'md'}
+      w={matches ? '430px' : 'auto'}
+      h={matches ? '500px' : 'auto'}
+      justify='space-around'
+      direction='column'
+    >
       <Title order={1}>Personal Info</Title>
 
       <Text

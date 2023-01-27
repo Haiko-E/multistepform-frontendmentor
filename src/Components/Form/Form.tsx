@@ -8,6 +8,7 @@ import { z } from 'zod';
 import Addons from '../Addons/Addons';
 import FinishUp from '../FinishUp/FinishUp';
 import ThankModal from '../ThankModal/ThankModal';
+import { useMediaQuery } from '@mantine/hooks';
 
 const regex = /^[+]?(\d{1,2})?[\s.-]?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
 
@@ -30,6 +31,7 @@ export type Plan = z.infer<typeof Plan>;
 export type Adds = z.infer<typeof Adds>;
 
 const Form = () => {
+  const matches = useMediaQuery('(min-width: 500px)');
   const [step, setStep] = useState(1);
 
   // The form gets al the state updates and preserves the state
@@ -48,12 +50,14 @@ const Form = () => {
 
   return (
     <Flex
+      direction={matches ? 'row' : 'column'}
       align='center'
       justify='space-between'
-      w='800px'
+      w={matches ? '800px' : '100%'}
+      h={matches ? 'auto' : '100%'}
       bg='customGrey.0'
-      p='md'
-      style={{ overflow: 'auto', borderRadius: '10px' }}
+      p={matches ? 'md' : '0px'}
+      style={{ overflow: 'auto', borderRadius: matches ? '10px' : '0px' }}
     >
       <FormSteps step={step} />
       <form>
