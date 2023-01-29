@@ -121,7 +121,7 @@ const SelectPlan = ({ form, step, setStep }: Props) => {
               form={form}
               title='Arcade'
               price={payment === 'montly' ? '$9 p/m' : '$90 p/y'}
-              logo='/public/assets/images/icon-arcade.svg'
+              logo='/assets/images/icon-arcade.svg'
               active={form.values.plan.name === 'arcade'}
             />
           }
@@ -134,7 +134,7 @@ const SelectPlan = ({ form, step, setStep }: Props) => {
               form={form}
               title='Advanced'
               price={payment === 'montly' ? '$12 p/m' : '$120 p/y'}
-              logo='/public/assets/images/icon-advanced.svg'
+              logo='/assets/images/icon-advanced.svg'
               active={form.values.plan.name === 'advanced'}
             />
           }
@@ -147,7 +147,7 @@ const SelectPlan = ({ form, step, setStep }: Props) => {
               form={form}
               title='Pro'
               price={payment === 'montly' ? '$15 p/m' : '$150 p/y'}
-              logo='/public/assets/images/icon-pro.svg'
+              logo='/assets/images/icon-pro.svg'
               active={form.values.plan.name === 'pro'}
             />
           }

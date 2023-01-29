@@ -25,7 +25,7 @@ const ThankModal = () => {
             }
       }
     >
-      <Image width={80} height={80} src='/public/assets/images/icon-thank-you.svg' />
+      <Image width={80} height={80} src='/assets/images/icon-thank-you.svg' />
       <Text mb='0' c='customBlue.0' fz='30px' component='h1'>
         Thank you!
       </Text>

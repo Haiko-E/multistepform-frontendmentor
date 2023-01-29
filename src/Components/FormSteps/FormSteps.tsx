@@ -23,8 +23,8 @@ const FormSteps = ({ step }: Props) => {
       <Image
         src={
           matches
-            ? '/public/assets/images/bg-sidebar-desktop.svg'
-            : '/public/assets/images/bg-sidebar-mobile.svg'
+            ? '/assets/images/bg-sidebar-desktop.svg'
+            : '/assets/images/bg-sidebar-mobile.svg'
         }
         styles={{ figure: { width: '100%' } }}
         alt='Background form steps'
