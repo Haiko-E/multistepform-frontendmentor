@@ -19,6 +19,8 @@ const FinishItem = ({ form, setStep }: Props) => {
     formValues.plan.price // <-- initial
   );
 
+  console.log(form.values);
+
   return (
     <>
       <Flex
@@ -50,7 +52,7 @@ const FinishItem = ({ form, setStep }: Props) => {
           <Text fw='500' c='customBlue.0'>
             {formValues.payment === 'montly'
               ? `$${formValues.plan.price}/mo`
-              : `$${formValues.plan.price * 12}/yr`}
+              : `$${formValues.plan.price}/yr`}
           </Text>
         </Flex>
         <Divider mt='lg' size='sm' />
@@ -70,21 +72,19 @@ const FinishItem = ({ form, setStep }: Props) => {
                 <Text fz='sm' c='customBlue.0'>
                   {formValues.payment === 'montly'
                     ? `+$${addon.price}/mo`
-                    : `+$${addon.price * 12}/yr`}
+                    : `+$${addon.price}/yr`}
                 </Text>
               </Flex>
             );
           })}
         </Flex>
       </Flex>
-      <Flex p='lg' align='center'>
+      <Flex style={{ flex: 1 }} p='lg'>
         <Text fz='sm' c='customGrey.3' style={{ flex: 1 }} component='span'>
           {`Total (per ${formValues.payment === 'montly' ? 'month' : 'year'})`}
         </Text>
         <Text fw={500} fz='lg' c='customPurple.2'>
-          {`${
-            formValues.payment === 'montly' ? `$${total}/mo` : `$${total * 12}/yr`
-          }`}
+          {`${formValues.payment === 'montly' ? `$${total}/mo` : `$${total}/yr`}`}
         </Text>
       </Flex>
     </>

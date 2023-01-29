@@ -9,6 +9,7 @@ import Addons from '../Addons/Addons';
 import FinishUp from '../FinishUp/FinishUp';
 import ThankModal from '../ThankModal/ThankModal';
 import { useMediaQuery } from '@mantine/hooks';
+import DataRender from '../DataRender/DataRender';
 
 const regex = /^[+]?(\d{1,2})?[\s.-]?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
 
@@ -61,16 +62,12 @@ const Form = () => {
     >
       <FormSteps step={step} />
       <form>
-        {step === 1 && <PersonInfo form={form} step={step} setStep={setStep} />}
+        {step === 1 && <PersonInfo form={form} setStep={setStep} />}
         {step === 2 && <SelectPlan form={form} step={step} setStep={setStep} />}
         {step === 3 && <Addons form={form} setStep={setStep} />}
         {step === 4 && <FinishUp form={form} setStep={setStep} />}
         {step === 5 && <ThankModal></ThankModal>}
-        {step === 6 && (
-          <Center w='430px' h='480px'>
-            <pre>{JSON.stringify(form.values, undefined, 2)}</pre>
-          </Center>
-        )}
+        {step === 6 && <DataRender form={form} />}
       </form>
     </Flex>
   );

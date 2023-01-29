@@ -1,20 +1,21 @@
 import { Flex, Title, Button, Text, Center } from '@mantine/core';
 import { Dispatch, ReactNode, SetStateAction, useState } from 'react';
-import { OnSubmit } from '@mantine/form/lib/types';
-import Form from '../Form/Form';
-
-type Variant = 'first' | 'middle' | 'last';
+import { useMediaQuery } from '@mantine/hooks';
+import { UseFormReturnType } from '@mantine/form';
+import { Form } from '../Form/Form';
 
 type Props = {
-  variant: Variant;
+  variant: 'first' | 'middle' | 'last';
   header: string;
   description: string;
   buttonText?: string;
   children?: ReactNode;
   setStep: Dispatch<SetStateAction<number>>;
+  form: UseFormReturnType<Form>;
 };
 
 const FormItem = ({
+  form,
   variant,
   buttonText = 'Next step',
   setStep,
@@ -23,6 +24,14 @@ const FormItem = ({
   description,
 }: Props) => {
   const [isLoading, setIsLoading] = useState(false);
+  const matches = useMediaQuery('(min-width: 500px)');
+
+  function handleClick() {
+    if (form.validate().hasErrors) {
+      return;
+    }
+    setStep((prev) => prev + 1);
+  }
 
   function handleSubmit() {
     setIsLoading(true);
@@ -37,23 +46,57 @@ const FormItem = ({
   }
 
   return (
-    <Flex py='md' w='430px' h='500px' direction='column'>
-      <Title order={1}>{header}</Title>
-      <Text
-        mt='5px'
-        component='p'
-        sx={(theme) => ({
-          color: theme.colors.customGrey[3],
-        })}
-      >
-        {description}
-      </Text>
-      {isLoading ? <Center h='100%'>Sending</Center> : children}
+    <>
       <Flex
-        style={{ flex: 1 }}
+        style={
+          matches
+            ? {}
+            : {
+                position: 'absolute',
+                top: '100px',
+                left: '30px',
+                right: '30px',
+                borderRadius: '10px',
+              }
+        }
+        bg={'customGrey.0'}
+        py={matches ? 'md' : '30px'}
+        px={matches ? '0px' : 'md'}
+        w={matches ? '430px' : 'auto'}
+        h={matches ? '500px' : 'auto'}
+        justify='space-around'
+        direction='column'
+      >
+        <Title fz={matches ? '36px' : '30px'} order={1}>
+          {header}
+        </Title>
+        <Text
+          fz={matches ? 'md' : 'sm'}
+          mt='5px'
+          component='p'
+          sx={(theme) => ({
+            color: theme.colors.customGrey[3],
+          })}
+        >
+          {description}
+        </Text>
+        {isLoading ? <Center h='100%'>Sending</Center> : children}
+      </Flex>
+      <Flex
+        style={
+          matches
+            ? { flex: 1 }
+            : {
+                padding: '20px',
+                backgroundColor: 'white',
+                position: 'absolute',
+                bottom: '0px',
+                left: '0px',
+                right: '0px',
+              }
+        }
         align='flex-end'
         justify={variant !== 'first' ? 'space-between' : 'flex-end'}
-        pt='80px'
       >
         {variant !== 'first' && (
           <Button
@@ -87,12 +130,12 @@ const FormItem = ({
             {'Confirm' || buttonText}
           </Button>
         ) : (
-          <Button onClick={() => setStep((prev) => prev + 1)} color='customBlue.0'>
+          <Button onClick={handleClick} color='customBlue.0'>
             {buttonText}
           </Button>
         )}
       </Flex>
-    </Flex>
+    </>
   );
 };
 

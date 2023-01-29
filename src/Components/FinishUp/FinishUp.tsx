@@ -12,6 +12,7 @@ type Props = {
 const FinishUp = ({ form, setStep }: Props) => {
   return (
     <FormItem
+      form={form}
       header='Finish up'
       description='Double-check if everything is OK before confirming'
       variant='last'

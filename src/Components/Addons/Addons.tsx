@@ -1,4 +1,4 @@
-import { Checkbox } from '@mantine/core';
+import { Checkbox, Flex } from '@mantine/core';
 import { UseFormReturnType } from '@mantine/form';
 import { Form } from '../Form/Form';
 import { Dispatch, SetStateAction } from 'react';
@@ -11,6 +11,7 @@ type Props = {
 };
 
 const Addons = ({ form, setStep }: Props) => {
+  const payment = form.values.payment;
   const checkboxValues = arrayTransform(form.values.addons);
 
   const handleAddons = (e: string[]) => {
@@ -19,6 +20,7 @@ const Addons = ({ form, setStep }: Props) => {
 
   return (
     <FormItem
+      form={form}
       description='Add-ons help enhance your gaming experience'
       header='Pick Add-ons'
       variant='middle'
@@ -28,26 +30,27 @@ const Addons = ({ form, setStep }: Props) => {
         styles={{
           root: { '>div': { flexDirection: 'column', alignItems: 'flex-start' } },
         }}
+        style={{ flex: 1 }}
         value={checkboxValues}
         onChange={handleAddons}
       >
         <AddonsItem
           header='Online service'
           description='Acces to multiplayer games'
-          price={1}
-          value='Online service, 1'
+          price={payment === 'montly' ? 1 : 10}
+          value={payment === 'montly' ? 'Online service, 1' : 'Online service, 10'}
         />
         <AddonsItem
           header='Larger storage'
           description='Extra 1TB cloud storage'
-          price={2}
-          value='Larger storage, 2'
+          price={payment === 'montly' ? 2 : 20}
+          value={payment === 'montly' ? 'Larger storage, 2' : 'Larger storage, 20'}
         />
         <AddonsItem
           header='Customizable Profile'
           description='Custom theme on your profile'
-          price={2}
-          value='Custom profile, 2'
+          price={payment === 'montly' ? 2 : 20}
+          value={payment === 'montly' ? 'Custom profile, 2' : 'Custom profile, 20'}
         />
       </Checkbox.Group>
     </FormItem>
