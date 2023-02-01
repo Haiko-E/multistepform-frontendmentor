@@ -57,7 +57,7 @@ const Form = () => {
       align='center'
       justify='space-between'
       w={matches ? '800px' : '100%'}
-      h={matches ? 'auto' : '100%'}
+      mih={matches ? 'auto' : '100%'}
       bg='customGrey.0'
       p={matches ? 'md' : '0px'}
       style={{ overflow: 'auto', borderRadius: matches ? '10px' : '0px' }}
