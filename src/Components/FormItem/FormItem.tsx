@@ -91,7 +91,7 @@ const FormItem = ({
             : {
                 padding: '20px',
                 backgroundColor: 'white',
-                position: 'absolute',
+                position: 'fixed',
                 bottom: '0px',
                 left: '0px',
                 right: '0px',
