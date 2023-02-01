@@ -1,8 +1,8 @@
-import { Flex, Center } from '@mantine/core';
+import { Flex } from '@mantine/core';
 import { useForm, zodResolver } from '@mantine/form';
 import FormSteps from '../FormSteps/FormSteps';
 import PersonInfo from '../PersonInfo/PersonInfo';
-import { useState } from 'react';
+import { useState, useLayoutEffect } from 'react';
 import SelectPlan from '../SelectPlan/SelectPlan';
 import { z } from 'zod';
 import Addons from '../Addons/Addons';
@@ -32,7 +32,9 @@ export type Plan = z.infer<typeof Plan>;
 export type Adds = z.infer<typeof Adds>;
 
 const Form = () => {
-  const matches = useMediaQuery('(min-width: 500px)');
+  const matches = useMediaQuery('(min-width: 500px)', undefined, {
+    getInitialValueInEffect: false,
+  });
   const [step, setStep] = useState(1);
 
   // The form gets al the state updates and preserves the state

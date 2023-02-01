@@ -14,7 +14,9 @@ type Props = {
 
 const SelectPlanOption = ({ form, active, logo, title, price }: Props) => {
   const { classes, cx } = useStyles();
-  const matches = useMediaQuery('(min-width: 500px)');
+  const matches = useMediaQuery('(min-width: 500px)', undefined, {
+    getInitialValueInEffect: false,
+  });
 
   return (
     <Flex

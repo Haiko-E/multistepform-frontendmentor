@@ -32,7 +32,9 @@ const radioStyles = {
 
 const SelectPlan = ({ form, step, setStep }: Props) => {
   const payment = form.values.payment;
-  const matches = useMediaQuery('(min-width: 500px)');
+  const matches = useMediaQuery('(min-width: 500px)', undefined, {
+    getInitialValueInEffect: false,
+  });
 
   // Handler when plan changes
   const onChangeHandler = (e: string) => {
@@ -78,7 +80,7 @@ const SelectPlan = ({ form, step, setStep }: Props) => {
       }
     }
   };
-  console.log(form.values);
+
   return (
     <FormItem
       form={form}

@@ -1,6 +1,6 @@
 import { Anchor, Flex, Text, Divider } from '@mantine/core';
 import { UseFormReturnType } from '@mantine/form';
-import React, { Dispatch, Fragment, SetStateAction } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { Form } from '../Form/Form';
 
 type Props = {

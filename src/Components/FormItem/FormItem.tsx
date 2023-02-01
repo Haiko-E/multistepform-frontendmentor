@@ -24,7 +24,9 @@ const FormItem = ({
   description,
 }: Props) => {
   const [isLoading, setIsLoading] = useState(false);
-  const matches = useMediaQuery('(min-width: 500px)');
+  const matches = useMediaQuery('(min-width: 500px)', undefined, {
+    getInitialValueInEffect: false,
+  });
 
   function handleClick() {
     if (form.validate().hasErrors) {

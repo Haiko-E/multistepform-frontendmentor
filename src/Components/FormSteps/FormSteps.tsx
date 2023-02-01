@@ -8,7 +8,9 @@ type Props = {
 };
 
 const FormSteps = ({ step }: Props) => {
-  const matches = useMediaQuery('(min-width: 500px)');
+  const matches = useMediaQuery('(min-width: 500px)', undefined, {
+    getInitialValueInEffect: false,
+  });
   const { classes, cx } = useStyles();
 
   return (

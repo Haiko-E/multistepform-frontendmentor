@@ -2,7 +2,9 @@ import { Flex, Text, Image } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 
 const ThankModal = () => {
-  const matches = useMediaQuery('(min-width: 500px)');
+  const matches = useMediaQuery('(min-width: 500px)', undefined, {
+    getInitialValueInEffect: false,
+  });
   return (
     <Flex
       justify='center'
