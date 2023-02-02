@@ -1,9 +1,8 @@
 import { Flex, Title, Button, Text, Center } from '@mantine/core';
 import { Dispatch, ReactNode, SetStateAction, useState } from 'react';
-import { useMediaQuery } from '@mantine/hooks';
+import { useMediaQuery, useViewportSize } from '@mantine/hooks';
 import { UseFormReturnType } from '@mantine/form';
 import { Form } from '../Form/Form';
-import { useKeyboardOffset } from 'virtual-keyboard-offset';
 
 type Props = {
   variant: 'first' | 'middle' | 'last';
@@ -24,14 +23,12 @@ const FormItem = ({
   header,
   description,
 }: Props) => {
-  const { keyBoardOffset, windowHeight } = useKeyboardOffset();
+  const { height, width } = useViewportSize();
   const [isLoading, setIsLoading] = useState(false);
   const matches = useMediaQuery('(min-width: 500px)', undefined, {
     getInitialValueInEffect: false,
   });
-
-  console.log(keyBoardOffset);
-  console.log(windowHeight);
+  console.log(height);
 
   function handleClick() {
     if (form.validate().hasErrors) {
@@ -66,10 +63,10 @@ const FormItem = ({
                 borderRadius: '10px',
               }
         }
-        mb={`${keyBoardOffset}px`}
         bg={'customGrey.0'}
-        py={matches ? 'md' : '30px'}
+        pt={matches ? 'md' : '30px'}
         px={matches ? '0px' : 'md'}
+        pb={height < 400 ? '106px' : '30px'}
         w={matches ? '430px' : 'auto'}
         h={matches ? '500px' : 'auto'}
         justify='space-around'
