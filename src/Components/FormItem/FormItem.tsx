@@ -3,6 +3,7 @@ import { Dispatch, ReactNode, SetStateAction, useState } from 'react';
 import { useMediaQuery } from '@mantine/hooks';
 import { UseFormReturnType } from '@mantine/form';
 import { Form } from '../Form/Form';
+import { useKeyboardOffset } from 'virtual-keyboard-offset';
 
 type Props = {
   variant: 'first' | 'middle' | 'last';
@@ -23,6 +24,7 @@ const FormItem = ({
   header,
   description,
 }: Props) => {
+  const { keyBoardOffset } = useKeyboardOffset();
   const [isLoading, setIsLoading] = useState(false);
   const matches = useMediaQuery('(min-width: 500px)', undefined, {
     getInitialValueInEffect: false,
@@ -97,6 +99,7 @@ const FormItem = ({
                 right: '0px',
               }
         }
+        mt={`${keyBoardOffset}px`}
         align='flex-end'
         justify={variant !== 'first' ? 'space-between' : 'flex-end'}
       >
