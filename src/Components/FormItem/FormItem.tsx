@@ -63,6 +63,7 @@ const FormItem = ({
                 borderRadius: '10px',
               }
         }
+        mb={`${keyBoardOffset}px`}
         bg={'customGrey.0'}
         py={matches ? 'md' : '30px'}
         px={matches ? '0px' : 'md'}
@@ -99,7 +100,6 @@ const FormItem = ({
                 right: '0px',
               }
         }
-        mt={`${keyBoardOffset}px`}
         align='flex-end'
         justify={variant !== 'first' ? 'space-between' : 'flex-end'}
       >
