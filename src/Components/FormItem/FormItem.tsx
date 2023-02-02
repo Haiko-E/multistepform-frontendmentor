@@ -24,11 +24,14 @@ const FormItem = ({
   header,
   description,
 }: Props) => {
-  const { keyBoardOffset } = useKeyboardOffset();
+  const { keyBoardOffset, windowHeight } = useKeyboardOffset();
   const [isLoading, setIsLoading] = useState(false);
   const matches = useMediaQuery('(min-width: 500px)', undefined, {
     getInitialValueInEffect: false,
   });
+
+  console.log(keyBoardOffset);
+  console.log(windowHeight);
 
   function handleClick() {
     if (form.validate().hasErrors) {
