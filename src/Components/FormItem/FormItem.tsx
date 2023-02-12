@@ -23,12 +23,10 @@ const FormItem = ({
   header,
   description,
 }: Props) => {
-  const { height, width } = useViewportSize();
   const [isLoading, setIsLoading] = useState(false);
   const matches = useMediaQuery('(min-width: 500px)', undefined, {
     getInitialValueInEffect: false,
   });
-  console.log(height);
 
   function handleClick() {
     if (form.validate().hasErrors) {
@@ -66,7 +64,7 @@ const FormItem = ({
         bg={'customGrey.0'}
         pt={matches ? 'md' : '30px'}
         px={matches ? '0px' : 'md'}
-        pb={height < 400 ? '106px' : '30px'}
+        pb='30px'
         w={matches ? '430px' : 'auto'}
         h={matches ? '500px' : 'auto'}
         justify='space-around'
