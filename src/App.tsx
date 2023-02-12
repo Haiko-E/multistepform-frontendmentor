@@ -1,13 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Form from './Components/Form/Form';
 import { useViewportSize } from '@mantine/hooks';
 
 export default function App() {
-  const [initialState, setInitialsState] = useState(700);
-  const { height, width } = useViewportSize();
+  const { height } = useViewportSize();
 
   useEffect(() => {
-    document.body.style.minHeight = `${initialState}px`;
+    document.body.style.minHeight = `700px`;
 
     return () => {
       document.body.style.minHeight = '';
@@ -18,12 +17,12 @@ export default function App() {
     const windowHeight = +document.body.style.minHeight.slice(0, -2);
 
     if (height !== 0 && windowHeight > height) {
-      const newHeight = windowHeight - height + windowHeight;
+      const newHeight = 100 + windowHeight;
       document.body.style.minHeight = `${newHeight}px`;
     }
 
     return () => {
-      document.body.style.minHeight = `${initialState}px`;
+      document.body.style.minHeight = `700px`;
     };
   }, [height]);
 
