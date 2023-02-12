@@ -3,11 +3,11 @@ import Form from './Components/Form/Form';
 import { useViewportSize } from '@mantine/hooks';
 
 export default function App() {
-  const [initialState, setInitialsState] = useState(0);
+  const [initialState, setInitialsState] = useState(700);
   const { height, width } = useViewportSize();
 
   useEffect(() => {
-    document.body.style.minHeight = `${window.innerHeight}px`;
+    document.body.style.minHeight = `${initialState}px`;
     setInitialsState(window.innerHeight);
     return () => {
       document.body.style.minHeight = '';
