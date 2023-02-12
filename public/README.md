@@ -29,7 +29,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](./public/assets/../../assets/images/FormPreview.png)
+![](./../src/assets/FormPreview.png)
 
 ### Links
 
