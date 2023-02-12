@@ -8,7 +8,7 @@ export default function App() {
 
   useEffect(() => {
     document.body.style.minHeight = `${initialState}px`;
-    setInitialsState(window.innerHeight);
+
     return () => {
       document.body.style.minHeight = '';
     };
