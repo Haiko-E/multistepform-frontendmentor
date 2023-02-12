@@ -40,10 +40,10 @@ Users should be able to:
 
 ### Built with
 
-- [Matine](https://mantine.dev/) - Styling, Custom Hooks, Form handeling, Components
+- [Mantine](https://mantine.dev/) - Styling, Custom Hooks, Form handeling, Components
 - [React](https://reactjs.org/) - JS library
 - [Vite](https://styled-components.com/) - builder
-- [Zog](https://zod.dev/) Schema validation / typesafe
+- [Zod](https://zod.dev/) Schema validation / typesafe
 
 ## Author
 
