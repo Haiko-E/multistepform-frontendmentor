@@ -6,7 +6,7 @@ export default function App() {
   const { height } = useViewportSize();
 
   useEffect(() => {
-    document.body.style.minHeight = `700px`;
+    document.body.style.minHeight = `650px`;
 
     return () => {
       document.body.style.minHeight = '';
@@ -22,7 +22,7 @@ export default function App() {
     }
 
     return () => {
-      document.body.style.minHeight = `700px`;
+      document.body.style.minHeight = `650px`;
     };
   }, [height]);
 
